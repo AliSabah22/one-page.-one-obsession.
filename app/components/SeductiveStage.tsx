@@ -68,7 +68,7 @@ export default function SeductiveStage({ stage, onComplete, isLastStage }: Seduc
       <div className="text-center max-w-4xl mx-auto px-6 relative z-10">
         {/* Title */}
         <h1
-          className={`text-6xl md:text-8xl font-bold mb-8 font-seductive ${stage.textColor} ${stage.glowClass} animate-pulse-glow transition-all duration-1000`}
+          className={`text-6xl md:text-8xl font-bold mb-8 font-seductive ${stage.textColor} ${stage.glowClass} animate-seductive-pulse transition-all duration-1000`}
         >
           {stage.title}
         </h1>
@@ -96,7 +96,7 @@ export default function SeductiveStage({ stage, onComplete, isLastStage }: Seduc
         {showForm && !isSubmitted && (
           <form
             onSubmit={handleFormSubmit}
-            className="max-w-md mx-auto transition-all duration-800 opacity-100 scale-100"
+            className="max-w-md mx-auto transition-all duration-800 opacity-100 scale-100 obsidian-border rounded-lg p-6"
           >
             <div className="mb-6">
               <input
@@ -111,7 +111,7 @@ export default function SeductiveStage({ stage, onComplete, isLastStage }: Seduc
             </div>
             <button
               type="submit"
-              className="w-full px-8 py-4 blood-button text-xl font-semibold rounded-lg"
+              className="w-full px-8 py-4 seductive-button text-xl font-semibold rounded-lg"
             >
               Seal Your Fate
             </button>
@@ -121,7 +121,7 @@ export default function SeductiveStage({ stage, onComplete, isLastStage }: Seduc
         {/* Success Message */}
         {isSubmitted && (
           <div className="text-center transition-all duration-1000 opacity-100">
-            <h3 className="text-3xl font-bold mb-4 blood-glow text-blood-red-300">
+            <h3 className="text-3xl font-bold mb-4 seductive-glow text-seductive-red-300">
               {name}, you are now mine...
             </h3>
             <p className="text-xl opacity-90">
@@ -137,7 +137,7 @@ export default function SeductiveStage({ stage, onComplete, isLastStage }: Seduc
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-blood-red-500 rounded-full animate-pulse"
+            className="absolute w-1 h-1 bg-seductive-red-500 rounded-full animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,

@@ -9,9 +9,9 @@ const stages = [
     title: 'The First Look',
     subtitle: 'One obsession that will consume you completely',
     prompt: 'Hover to begin your descent into obsession...',
-    background: 'bg-obsession-black-950',
-    textColor: 'text-blood-red-500',
-    glowClass: 'blood-glow',
+    background: 'bg-obsidian-black-950',
+    textColor: 'text-seductive-red-500',
+    glowClass: 'seductive-glow',
     description: 'The spark of obsession ignites...'
   },
   {
@@ -19,9 +19,9 @@ const stages = [
     title: 'The Craving',
     subtitle: 'You feel it now, don\'t you? That hunger growing inside...',
     prompt: 'Let the desire consume you completely...',
-    background: 'obsession-background',
-    textColor: 'text-blood-red-400',
-    glowClass: 'obsession-glow',
+    background: 'seductive-background',
+    textColor: 'text-seductive-red-400',
+    glowClass: 'obsidian-glow',
     description: 'The hunger becomes unbearable...'
   },
   {
@@ -29,9 +29,9 @@ const stages = [
     title: 'The Possession',
     subtitle: 'You\'re mine now. Every breath, every thought belongs to me...',
     prompt: 'Surrender to the darkness within...',
-    background: 'bg-obsession-black-950',
-    textColor: 'text-blood-red-600',
-    glowClass: 'blood-glow',
+    background: 'obsidian-background',
+    textColor: 'text-seductive-red-600',
+    glowClass: 'dark-crimson-glow',
     description: 'Complete and utter possession...'
   },
   {
@@ -39,9 +39,9 @@ const stages = [
     title: 'The Surrender',
     subtitle: 'Now tell me your name, my obsession...',
     prompt: 'Seal your fate with me...',
-    background: 'blood-background',
-    textColor: 'text-blood-red-300',
-    glowClass: 'obsession-glow',
+    background: 'dark-crimson-background',
+    textColor: 'text-seductive-red-300',
+    glowClass: 'seductive-glow',
     description: 'Final surrender and eternal binding...'
   }
 ]
@@ -61,7 +61,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen relative overflow-hidden">
+    <main className="min-h-screen relative overflow-hidden animate-obsidian-shimmer">
       <div 
         className={`min-h-screen ${stages[currentStage].background} transition-opacity duration-800 ${
           isTransitioning ? 'opacity-0' : 'opacity-100'
@@ -79,7 +79,7 @@ export default function Home() {
         {[...Array(5)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-20 bg-gradient-to-b from-blood-red-600 to-transparent opacity-20 animate-blood-drip"
+            className="absolute w-1 h-20 bg-gradient-to-b from-seductive-red-600 to-transparent opacity-20 animate-blood-drip"
             style={{
               left: `${20 + i * 15}%`,
               top: '-20px',
