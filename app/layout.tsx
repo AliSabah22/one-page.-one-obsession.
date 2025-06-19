@@ -4,8 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'One Page. One Obsession.',
-  description: 'A seductive journey through stages of obsessive love',
-  keywords: 'obsession, seduction, love, interactive, experience',
+  description: 'A seductive, dark red room experience',
 }
 
 export default function RootLayout({
@@ -15,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <head>
+        <script src="/animation.js" defer></script>
+      </head>
+      <body className="bg-black text-white overflow-x-hidden">
         {children}
       </body>
     </html>

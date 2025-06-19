@@ -378,4 +378,150 @@
   100% { 
     background: linear-gradient(45deg, #020617 0%, #0f172a 50%, #020617 100%);
   }
+}
+
+/* Custom fonts */
+.font-seductive {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-obsession {
+  font-family: 'Crimson Text', serif;
+}
+
+/* Enhanced text effects */
+.seductive-description {
+  line-height: 1.8;
+  text-shadow: 0 0 5px rgba(220, 38, 38, 0.3);
+}
+
+.seductive-prompt {
+  text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+  transition: all 0.3s ease;
+}
+
+.seductive-prompt:hover {
+  text-shadow: 0 0 20px rgba(220, 38, 38, 0.8);
+}
+
+/* Form styling */
+.form-input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(220, 38, 38, 0.6);
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: rgba(220, 38, 38, 0.8);
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
+}
+
+.seductive-button {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  transition: all 0.3s ease;
+}
+
+.seductive-button:hover {
+  background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+}
+
+/* Background classes */
+.seductive-background {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%);
+}
+
+.obsidian-background {
+  background: linear-gradient(135deg, #0f172a 0%, #020617 50%, #0f172a 100%);
+}
+
+.dark-crimson-background {
+  background: linear-gradient(135deg, #450a0a 0%, #1a1a1a 50%, #450a0a 100%);
+}
+
+/* Glow effects */
+.obsidian-glow {
+  text-shadow: 0 0 10px #475569, 0 0 20px #475569;
+}
+
+.dark-crimson-glow {
+  text-shadow: 0 0 10px #991b1b, 0 0 20px #991b1b;
+}
+
+/* Enhanced animations */
+@keyframes seductivePulse {
+  0%, 100% {
+    text-shadow: 0 0 15px #dc2626, 0 0 25px #dc2626, 0 0 35px #dc2626;
+  }
+  50% {
+    text-shadow: 0 0 25px #dc2626, 0 0 35px #dc2626, 0 0 45px #dc2626;
+  }
+}
+
+@keyframes pulseExpand {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes stageTransition {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes enhancedBloodDrip {
+  0% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Animation classes */
+.seductive-glow {
+  animation: seductivePulse 3s ease-in-out infinite;
+}
+
+.heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.stage-transition {
+  animation: stageTransition 1.5s ease-in-out;
+}
+
+.enhanced-red-room {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%);
+}
+
+.animate-seductive-pulse {
+  animation: seductivePulse 3s ease-in-out infinite;
 } 
