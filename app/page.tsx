@@ -7,7 +7,6 @@ const stages = [
   {
     id: 'first-look',
     title: '🔥 The Way I Watch You, Malak',
-    subtitle: 'Curious. Intimate. Soft obsession.',
     prompt: '"Click here, Baby Girl… let me pull you closer."',
     background: 'bg-obsidian-black-950',
     textColor: 'text-seductive-red-500',
@@ -17,7 +16,6 @@ const stages = [
   {
     id: 'craving',
     title: '🔥 The Way I\'ll Touch You Without Touching You',
-    subtitle: 'Sensual. Building tension. Psychological seduction.',
     prompt: '"Click here, Malak… let Daddy take it further."',
     background: 'seductive-background',
     textColor: 'text-seductive-red-400',
@@ -27,7 +25,6 @@ const stages = [
   {
     id: 'possession',
     title: '🔥 The Way I\'ll Own You',
-    subtitle: 'Possessive. Dominant. Craving control—but with care.',
     prompt: '"Click here, my good girl… and give yourself to me."',
     background: 'obsidian-background',
     textColor: 'text-seductive-red-600',
@@ -37,7 +34,6 @@ const stages = [
   {
     id: 'surrender',
     title: '🔥 The Way I\'ll Keep You',
-    subtitle: 'Deep love. Safety. Worshipful obsession.',
     prompt: '"Click here, my angel… and tell me your name one more time. So I can make sure you never forget who you belong to."',
     background: 'dark-crimson-background',
     textColor: 'text-seductive-red-300',
