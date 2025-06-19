@@ -68,20 +68,27 @@ export default function SeductiveStage({ stage, onComplete, isLastStage }: Seduc
       <div className="text-center max-w-4xl mx-auto px-6 relative z-10">
         {/* Title */}
         <h1
-          className={`text-6xl md:text-8xl font-bold mb-8 font-seductive ${stage.textColor} ${stage.glowClass} animate-seductive-pulse transition-all duration-1000`}
+          className={`text-4xl md:text-6xl font-bold mb-6 font-seductive ${stage.textColor} ${stage.glowClass} animate-seductive-pulse transition-all duration-1000`}
         >
           {stage.title}
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl mb-12 opacity-80 transition-all duration-1000">
+        <p className="text-lg md:text-xl mb-8 opacity-80 transition-all duration-1000">
           {stage.subtitle}
         </p>
+
+        {/* Description */}
+        <div className="mb-12 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl seductive-description transition-all duration-1000">
+            {stage.description}
+          </p>
+        </div>
 
         {/* Interactive Prompt */}
         {!showForm && !isSubmitted && (
           <div
-            className={`text-3xl md:text-4xl font-semibold ${stage.textColor} seductive-prompt transition-all duration-700 ${
+            className={`text-2xl md:text-3xl font-semibold ${stage.textColor} seductive-prompt transition-all duration-700 animate-heartbeat ${
               isHovered ? 'scale-110' : 'scale-100'
             } ${isClicked ? 'opacity-0 scale-50' : 'opacity-100'}`}
             style={{ cursor: isLastStage ? 'pointer' : 'default' }}
@@ -122,10 +129,13 @@ export default function SeductiveStage({ stage, onComplete, isLastStage }: Seduc
         {isSubmitted && (
           <div className="text-center transition-all duration-1000 opacity-100">
             <h3 className="text-3xl font-bold mb-4 seductive-glow text-seductive-red-300">
-              {name}, you are now mine...
+              {name}, you are now mine forever...
             </h3>
-            <p className="text-xl opacity-90">
-              Your obsession has been sealed. I will never let you go.
+            <p className="text-xl opacity-90 mb-4">
+              Your surrender has been sealed. You belong to me now.
+            </p>
+            <p className="text-lg opacity-80">
+              I'll never let you go, my angel.
             </p>
           </div>
         )}
@@ -134,7 +144,7 @@ export default function SeductiveStage({ stage, onComplete, isLastStage }: Seduc
       {/* Atmospheric effects */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Glowing particles */}
-        {[...Array(20)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-seductive-red-500 rounded-full animate-pulse"

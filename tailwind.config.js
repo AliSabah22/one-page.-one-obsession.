@@ -52,6 +52,9 @@ module.exports = {
         'seductive': ['Playfair Display', 'serif'],
         'obsession': ['Crimson Text', 'serif'],
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       animation: {
         'pulse-glow': 'pulse-glow 3s ease-in-out infinite alternate',
         'flicker': 'flicker 0.15s infinite linear',
@@ -63,39 +66,39 @@ module.exports = {
       keyframes: {
         'pulse-glow': {
           '0%': { 
-            textShadow: '0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor',
+            textShadow: '0 0 10px currentColor, 0 0 20px currentColor',
             transform: 'scale(1)'
           },
           '100%': { 
-            textShadow: '0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor, 0 0 80px currentColor',
-            transform: 'scale(1.02)'
+            textShadow: '0 0 20px currentColor, 0 0 40px currentColor',
+            transform: 'scale(1.01)'
           }
         },
         'flicker': {
           '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.7' }
+          '50%': { opacity: '0.8' }
         },
         'breath': {
           '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.05)' }
+          '50%': { transform: 'scale(1.02)' }
         },
         'blood-drip': {
           '0%': { transform: 'translateY(-10px) scale(1)' },
-          '50%': { transform: 'translateY(5px) scale(1.1)' },
+          '50%': { transform: 'translateY(5px) scale(1.05)' },
           '100%': { transform: 'translateY(-10px) scale(1)' }
         },
         'seductive-pulse': {
           '0%': { 
             textShadow: '0 0 15px #dc2626, 0 0 30px #dc2626',
-            opacity: '0.8'
+            opacity: '0.9'
           },
           '50%': { 
-            textShadow: '0 0 25px #dc2626, 0 0 50px #dc2626, 0 0 75px #dc2626',
+            textShadow: '0 0 25px #dc2626, 0 0 50px #dc2626',
             opacity: '1'
           },
           '100%': { 
             textShadow: '0 0 15px #dc2626, 0 0 30px #dc2626',
-            opacity: '0.8'
+            opacity: '0.9'
           }
         },
         'obsidian-shimmer': {

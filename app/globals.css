@@ -8,6 +8,51 @@
     @apply bg-obsidian-black-950 text-white font-obsession;
     overflow-x: hidden;
   }
+  
+  /* Custom cursor for opening scene */
+  .opening-cursor {
+    cursor: none;
+  }
+  
+  .opening-cursor:hover {
+    cursor: none;
+  }
+  
+  /* Red room effects */
+  .red-room-glow {
+    box-shadow: 
+      inset 0 0 100px rgba(220, 38, 38, 0.1),
+      0 0 50px rgba(220, 38, 38, 0.05);
+  }
+  
+  .red-room-border {
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    box-shadow: 
+      inset 0 0 20px rgba(220, 38, 38, 0.1),
+      0 0 30px rgba(220, 38, 38, 0.05);
+  }
+  
+  .red-room-text-shadow {
+    text-shadow: 
+      0 0 10px rgba(220, 38, 38, 0.5),
+      0 0 20px rgba(220, 38, 38, 0.3),
+      0 0 30px rgba(220, 38, 38, 0.1);
+  }
+  
+  .red-room-background {
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.05) 0%, transparent 70%);
+  }
+  
+  .red-room-pulse {
+    animation: red-room-pulse 4s ease-in-out infinite;
+  }
+  
+  .red-room-flicker {
+    animation: red-room-flicker 8s ease-in-out infinite;
+  }
 }
 
 @layer components {
@@ -19,28 +64,25 @@
     text-shadow: 
       0 0 10px #dc2626,
       0 0 20px #dc2626,
-      0 0 30px #dc2626,
-      0 0 40px #dc2626;
+      0 0 30px #dc2626;
   }
   
   .obsidian-glow {
     text-shadow: 
       0 0 15px #991b1b,
       0 0 30px #991b1b,
-      0 0 45px #991b1b,
-      0 0 60px #991b1b;
+      0 0 45px #991b1b;
   }
   
   .dark-crimson-glow {
     text-shadow: 
       0 0 20px #7f1d1d,
       0 0 40px #7f1d1d,
-      0 0 60px #7f1d1d,
-      0 0 80px #7f1d1d;
+      0 0 60px #7f1d1d;
   }
   
   .seductive-prompt {
-    @apply cursor-pointer transition-all duration-700 ease-out;
+    @apply cursor-pointer transition-all duration-500 ease-out;
     text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
   }
   
@@ -48,57 +90,88 @@
     text-shadow: 
       0 0 20px currentColor,
       0 0 40px currentColor,
-      0 0 60px currentColor,
-      0 0 80px currentColor;
+      0 0 60px currentColor;
+    transform: scale(1.03);
+  }
+  
+  .seductive-description {
+    @apply leading-relaxed opacity-90 font-obsession italic;
+    text-shadow: 0 0 5px rgba(220, 38, 38, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .seductive-description:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
   }
   
   .obsidian-background {
-    background: linear-gradient(135deg, 
-      rgba(2, 6, 23, 0.95) 0%,
-      rgba(15, 23, 42, 0.98) 50%,
-      rgba(2, 6, 23, 0.95) 100%);
+    background: 
+      linear-gradient(135deg, 
+        rgba(2, 6, 23, 0.95) 0%,
+        rgba(15, 23, 42, 0.98) 50%,
+        rgba(2, 6, 23, 0.95) 100%),
+      radial-gradient(circle at 30% 30%, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(220, 38, 38, 0.06) 0%, transparent 50%);
   }
   
   .seductive-background {
-    background: radial-gradient(circle at center,
-      rgba(220, 38, 38, 0.15) 0%,
-      rgba(127, 29, 29, 0.1) 30%,
-      rgba(2, 6, 23, 0.99) 70%,
-      rgba(2, 6, 23, 1) 100%);
+    background: 
+      radial-gradient(circle at center,
+        rgba(220, 38, 38, 0.15) 0%,
+        rgba(127, 29, 29, 0.1) 30%,
+        rgba(2, 6, 23, 0.99) 70%,
+        rgba(2, 6, 23, 1) 100%),
+      radial-gradient(circle at 25% 25%, rgba(220, 38, 38, 0.1) 0%, transparent 40%),
+      radial-gradient(circle at 75% 75%, rgba(220, 38, 38, 0.08) 0%, transparent 40%);
   }
   
   .dark-crimson-background {
-    background: linear-gradient(135deg,
-      rgba(127, 29, 29, 0.2) 0%,
-      rgba(2, 6, 23, 0.95) 50%,
-      rgba(127, 29, 29, 0.2) 100%);
+    background: 
+      linear-gradient(135deg,
+        rgba(127, 29, 29, 0.2) 0%,
+        rgba(2, 6, 23, 0.95) 50%,
+        rgba(127, 29, 29, 0.2) 100%),
+      radial-gradient(circle at 40% 40%, rgba(220, 38, 38, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 60% 60%, rgba(220, 38, 38, 0.1) 0%, transparent 45%);
   }
   
   .form-input {
     @apply bg-obsidian-black-900/50 border border-seductive-red-800/50 backdrop-blur-sm;
     transition: all 0.3s ease;
+    box-shadow: 
+      inset 0 0 10px rgba(220, 38, 38, 0.1),
+      0 0 15px rgba(220, 38, 38, 0.05);
   }
   
   .form-input:focus {
     @apply border-seductive-red-600;
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+    box-shadow: 
+      0 0 20px rgba(220, 38, 38, 0.5),
+      inset 0 0 15px rgba(220, 38, 38, 0.2);
   }
   
   .seductive-button {
     @apply bg-gradient-to-r from-seductive-red-800 to-seductive-red-900 text-white;
     transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+    box-shadow: 
+      0 0 20px rgba(220, 38, 38, 0.3),
+      inset 0 0 10px rgba(220, 38, 38, 0.2);
   }
   
   .seductive-button:hover {
     @apply from-seductive-red-700 to-seductive-red-800;
-    box-shadow: 0 0 30px rgba(220, 38, 38, 0.6);
+    box-shadow: 
+      0 0 30px rgba(220, 38, 38, 0.6),
+      inset 0 0 15px rgba(220, 38, 38, 0.3);
     transform: scale(1.02);
   }
   
   .obsidian-border {
     border: 1px solid rgba(220, 38, 38, 0.3);
-    box-shadow: inset 0 0 20px rgba(220, 38, 38, 0.1);
+    box-shadow: 
+      inset 0 0 20px rgba(220, 38, 38, 0.1),
+      0 0 25px rgba(220, 38, 38, 0.08);
   }
 }
 
@@ -121,5 +194,188 @@
   
   .animate-obsidian-shimmer {
     animation: obsidian-shimmer 6s ease-in-out infinite;
+  }
+  
+  .animate-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+  
+  .animate-seductive-fade {
+    animation: seductive-fade 3s ease-in-out infinite alternate;
+  }
+  
+  .animate-opening-glow {
+    animation: opening-glow 4s ease-in-out infinite alternate;
+  }
+  
+  .animate-cursor-pulse {
+    animation: cursor-pulse 2s ease-in-out infinite;
+  }
+  
+  .animate-rain-fall {
+    animation: rain-fall 12s linear infinite;
+  }
+  
+  .animate-slow-pulse {
+    animation: slow-pulse 6s ease-in-out infinite;
+  }
+  
+  .animate-red-room-pulse {
+    animation: red-room-pulse 4s ease-in-out infinite;
+  }
+  
+  .animate-red-room-flicker {
+    animation: red-room-flicker 8s ease-in-out infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes seductive-fade {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+@keyframes opening-glow {
+  0% { 
+    text-shadow: 
+      0 0 10px #dc2626,
+      0 0 20px #dc2626,
+      0 0 30px #dc2626;
+  }
+  100% { 
+    text-shadow: 
+      0 0 20px #dc2626,
+      0 0 40px #dc2626,
+      0 0 60px #dc2626,
+      0 0 80px #dc2626;
+  }
+}
+
+@keyframes cursor-pulse {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes slow-pulse {
+  0%, 100% { 
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.3;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes red-room-pulse {
+  0%, 100% { 
+    box-shadow: 
+      inset 0 0 100px rgba(220, 38, 38, 0.1),
+      0 0 50px rgba(220, 38, 38, 0.05);
+  }
+  50% { 
+    box-shadow: 
+      inset 0 0 120px rgba(220, 38, 38, 0.15),
+      0 0 60px rgba(220, 38, 38, 0.08);
+  }
+}
+
+@keyframes red-room-flicker {
+  0%, 100% { 
+    opacity: 1;
+    filter: brightness(1);
+  }
+  25% { 
+    opacity: 0.95;
+    filter: brightness(1.05);
+  }
+  50% { 
+    opacity: 1;
+    filter: brightness(1);
+  }
+  75% { 
+    opacity: 0.98;
+    filter: brightness(1.02);
+  }
+}
+
+@keyframes pulse-glow {
+  0% { 
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+    transform: scale(1);
+  }
+  100% { 
+    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes breath {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes blood-drip {
+  0% { transform: translateY(-10px) scale(1); }
+  50% { transform: translateY(5px) scale(1.05); }
+  100% { transform: translateY(-10px) scale(1); }
+}
+
+@keyframes seductive-pulse {
+  0% { 
+    text-shadow: 0 0 15px #dc2626, 0 0 30px #dc2626;
+    opacity: 0.9;
+  }
+  50% { 
+    text-shadow: 0 0 25px #dc2626, 0 0 50px #dc2626;
+    opacity: 1;
+  }
+  100% { 
+    text-shadow: 0 0 15px #dc2626, 0 0 30px #dc2626;
+    opacity: 0.9;
+  }
+}
+
+@keyframes obsidian-shimmer {
+  0% { 
+    background: linear-gradient(45deg, #020617 0%, #0f172a 50%, #020617 100%);
+  }
+  50% { 
+    background: linear-gradient(45deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  }
+  100% { 
+    background: linear-gradient(45deg, #020617 0%, #0f172a 50%, #020617 100%);
   }
 } 

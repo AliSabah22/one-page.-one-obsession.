@@ -1,6 +1,89 @@
-# One Page. One Obsession.
+# 🌒 One Page. One Obsession.
 
-A high-performance, seductive web experience built with Next.js that guides visitors through stages of obsessive love using smooth fade transitions and blood red aesthetics.
+A seductive, interactive web experience that takes visitors through four stages of dark, obsessive love. Built with Next.js, Tailwind CSS, and atmospheric animations.
+
+## 🎵 Music Integration
+
+The experience is designed to play **The Weeknd - Wicked Games** for the perfect seductive atmosphere.
+
+### How to Add the Music:
+
+1. **Download the song**: Get "Wicked Games" by The Weeknd (MP3 format)
+2. **Add to project**: Place the file in the `public` folder as `wicked-games.mp3`
+3. **Alternative formats**: You can also add `wicked-games.ogg` for better browser support
+
+### File Structure:
+```
+public/
+  └── wicked-games.mp3    # The Weeknd - Wicked Games
+```
+
+### Music Features:
+- **Auto-play**: Starts when transitioning from opening to Stage 1
+- **Loop**: Continuously plays throughout the experience
+- **Volume**: Set to 30% for atmospheric background
+- **Controls**: Play/pause button in bottom-right corner
+- **Fallback**: Works even if autoplay is blocked by browser
+
+### Alternative Songs:
+If you prefer different The Weeknd tracks:
+- **"Earned It"** - Slow, seductive, worshipful
+- **"Often"** - Dirty, obsessive, dominant  
+- **"After Hours"** - Emotional, haunting, vulnerable obsession
+
+Just rename your chosen file to `wicked-games.mp3` or update the source in `SeductiveStage.tsx`.
+
+## 🖤 Experience Flow
+
+1. **Opening Scene**: Personal invitation to Malak
+   - "Click here, Malak… and let me tell you what I'm going to do to you."
+   - Music begins when transitioning to Stage 1
+
+2. **Stage 1**: "The Way I Watch You, Malak"
+   - Soft obsession and intimate observation
+   - Music fades in (The Weeknd - Wicked Games)
+
+3. **Stage 2**: "The Way I'll Touch You Without Touching You"
+   - Psychological seduction and mind control
+
+4. **Stage 3**: "The Way I'll Own You"
+   - Complete possession and dominance
+
+5. **Stage 4**: "The Way I'll Keep You"
+   - Final surrender and eternal binding
+
+## 🎨 Features
+
+- **Dark Aesthetic**: Blood red and obsidian black color scheme
+- **Smooth Animations**: Fade transitions, heartbeat effects, glowing text
+- **Interactive Elements**: Hover effects, custom cursor, atmospheric particles
+- **Music Integration**: The Weeknd's seductive soundtrack
+- **Responsive Design**: Works on desktop and mobile
+- **Form Integration**: Captures visitor names for obsession sealing
+
+## 🚀 Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+**Important**: Add your music file to `public/wicked-games.mp3` before running!
+
+Visit `http://localhost:3000` to experience the seduction.
+
+## 🎭 Customization
+
+- Modify colors in `tailwind.config.js`
+- Update text content in `app/page.tsx`
+- Adjust animations in `app/globals.css`
+- Change music by replacing `public/wicked-games.mp3`
+
+## 🌹 The Experience
+
+This is not just a website—it's an immersive journey into dark, seductive obsession. Every element is designed to pull visitors deeper into the narrative, from the opening black screen to the final surrender, all accompanied by The Weeknd's haunting soundtrack.
+
+*"You're not safe with me—You're worshipped."*
 
 ## 🌹 Features
 
