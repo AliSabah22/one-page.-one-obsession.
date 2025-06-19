@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-obsession-black-950 text-white font-obsession;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .glow-text {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+  
+  .blood-glow {
+    text-shadow: 
+      0 0 10px #dc2626,
+      0 0 20px #dc2626,
+      0 0 30px #dc2626,
+      0 0 40px #dc2626;
+  }
+  
+  .obsession-glow {
+    text-shadow: 
+      0 0 15px #991b1b,
+      0 0 30px #991b1b,
+      0 0 45px #991b1b,
+      0 0 60px #991b1b;
+  }
+  
+  .seductive-prompt {
+    @apply cursor-pointer transition-all duration-700 ease-out;
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+  
+  .seductive-prompt:hover {
+    text-shadow: 
+      0 0 20px currentColor,
+      0 0 40px currentColor,
+      0 0 60px currentColor,
+      0 0 80px currentColor;
+  }
+  
+  .blood-background {
+    background: linear-gradient(135deg, 
+      rgba(127, 29, 29, 0.1) 0%,
+      rgba(0, 0, 0, 0.95) 50%,
+      rgba(127, 29, 29, 0.1) 100%);
+  }
+  
+  .obsession-background {
+    background: radial-gradient(circle at center,
+      rgba(153, 27, 27, 0.2) 0%,
+      rgba(0, 0, 0, 0.98) 70%,
+      rgba(0, 0, 0, 1) 100%);
+  }
+  
+  .form-input {
+    @apply bg-obsession-black-900/50 border border-blood-red-800/50 backdrop-blur-sm;
+    transition: all 0.3s ease;
+  }
+  
+  .form-input:focus {
+    @apply border-blood-red-600;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+  }
+  
+  .blood-button {
+    @apply bg-gradient-to-r from-blood-red-800 to-blood-red-900 text-white;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+  }
+  
+  .blood-button:hover {
+    @apply from-blood-red-700 to-blood-red-800;
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    filter: drop-shadow(0 0 10px currentColor);
+  }
+  
+  .animate-breath {
+    animation: breath 4s ease-in-out infinite;
+  }
+  
+  .animate-blood-drip {
+    animation: blood-drip 8s ease-in-out infinite;
+  }
+} 
