@@ -5,7 +5,7 @@
 
 @layer base {
   body {
-    @apply bg-obsession-black-950 text-white font-obsession;
+    @apply bg-obsidian-black-950 text-white font-obsession;
     overflow-x: hidden;
   }
 }
@@ -15,7 +15,7 @@
     text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
   }
   
-  .blood-glow {
+  .seductive-glow {
     text-shadow: 
       0 0 10px #dc2626,
       0 0 20px #dc2626,
@@ -23,12 +23,20 @@
       0 0 40px #dc2626;
   }
   
-  .obsession-glow {
+  .obsidian-glow {
     text-shadow: 
       0 0 15px #991b1b,
       0 0 30px #991b1b,
       0 0 45px #991b1b,
       0 0 60px #991b1b;
+  }
+  
+  .dark-crimson-glow {
+    text-shadow: 
+      0 0 20px #7f1d1d,
+      0 0 40px #7f1d1d,
+      0 0 60px #7f1d1d,
+      0 0 80px #7f1d1d;
   }
   
   .seductive-prompt {
@@ -44,40 +52,53 @@
       0 0 80px currentColor;
   }
   
-  .blood-background {
+  .obsidian-background {
     background: linear-gradient(135deg, 
-      rgba(127, 29, 29, 0.1) 0%,
-      rgba(0, 0, 0, 0.95) 50%,
-      rgba(127, 29, 29, 0.1) 100%);
+      rgba(2, 6, 23, 0.95) 0%,
+      rgba(15, 23, 42, 0.98) 50%,
+      rgba(2, 6, 23, 0.95) 100%);
   }
   
-  .obsession-background {
+  .seductive-background {
     background: radial-gradient(circle at center,
-      rgba(153, 27, 27, 0.2) 0%,
-      rgba(0, 0, 0, 0.98) 70%,
-      rgba(0, 0, 0, 1) 100%);
+      rgba(220, 38, 38, 0.15) 0%,
+      rgba(127, 29, 29, 0.1) 30%,
+      rgba(2, 6, 23, 0.99) 70%,
+      rgba(2, 6, 23, 1) 100%);
+  }
+  
+  .dark-crimson-background {
+    background: linear-gradient(135deg,
+      rgba(127, 29, 29, 0.2) 0%,
+      rgba(2, 6, 23, 0.95) 50%,
+      rgba(127, 29, 29, 0.2) 100%);
   }
   
   .form-input {
-    @apply bg-obsession-black-900/50 border border-blood-red-800/50 backdrop-blur-sm;
+    @apply bg-obsidian-black-900/50 border border-seductive-red-800/50 backdrop-blur-sm;
     transition: all 0.3s ease;
   }
   
   .form-input:focus {
-    @apply border-blood-red-600;
+    @apply border-seductive-red-600;
     box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
   }
   
-  .blood-button {
-    @apply bg-gradient-to-r from-blood-red-800 to-blood-red-900 text-white;
+  .seductive-button {
+    @apply bg-gradient-to-r from-seductive-red-800 to-seductive-red-900 text-white;
     transition: all 0.3s ease;
     box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
   }
   
-  .blood-button:hover {
-    @apply from-blood-red-700 to-blood-red-800;
+  .seductive-button:hover {
+    @apply from-seductive-red-700 to-seductive-red-800;
     box-shadow: 0 0 30px rgba(220, 38, 38, 0.6);
     transform: scale(1.02);
+  }
+  
+  .obsidian-border {
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    box-shadow: inset 0 0 20px rgba(220, 38, 38, 0.1);
   }
 }
 
@@ -92,5 +113,13 @@
   
   .animate-blood-drip {
     animation: blood-drip 8s ease-in-out infinite;
+  }
+  
+  .animate-seductive-pulse {
+    animation: seductive-pulse 2s ease-in-out infinite;
+  }
+  
+  .animate-obsidian-shimmer {
+    animation: obsidian-shimmer 6s ease-in-out infinite;
   }
 } 
