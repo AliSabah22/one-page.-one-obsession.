@@ -72,33 +72,47 @@ export default function Home() {
       setAnimations(redRoom)
     }
 
-    // Auto-start music immediately
+    // Preload and prepare audio for immediate playback
     if (audioRef.current) {
       audioRef.current.volume = 0.3
       audioRef.current.loop = true
+      audioRef.current.preload = 'auto'
+      
+      // Force audio to start loading
+      audioRef.current.load()
+      
+      console.log('Audio preloading started...')
       
       // Auto-play with user interaction fallback
       const playMusic = () => {
-        audioRef.current?.play().then(() => {
-          setIsPlaying(true)
-          console.log('🎵 Music started automatically!')
-        }).catch((error) => {
-          console.log('Auto-play failed, waiting for user interaction:', error)
-        })
+        if (audioRef.current && audioRef.current.readyState >= 2) {
+          audioRef.current.play().then(() => {
+            setIsPlaying(true)
+            console.log('🎵 Music started automatically!')
+          }).catch((error) => {
+            console.log('Auto-play failed, waiting for user interaction:', error)
+          })
+        }
       }
       
-      // Try to play immediately
-      playMusic()
+      // Try to play immediately if ready
+      if (audioRef.current.readyState >= 2) {
+        playMusic()
+      }
       
       // Also try on first user interaction
       const handleFirstInteraction = () => {
         playMusic()
         document.removeEventListener('click', handleFirstInteraction)
         document.removeEventListener('keydown', handleFirstInteraction)
+        document.removeEventListener('mousedown', handleFirstInteraction)
+        document.removeEventListener('touchstart', handleFirstInteraction)
       }
       
       document.addEventListener('click', handleFirstInteraction)
       document.addEventListener('keydown', handleFirstInteraction)
+      document.addEventListener('mousedown', handleFirstInteraction)
+      document.addEventListener('touchstart', handleFirstInteraction)
     }
 
     // Simple timeout for ready button
@@ -122,6 +136,33 @@ export default function Home() {
       document.removeEventListener('mousemove', handleMouseMove)
     }
   }, []) // Empty dependency array ensures this runs only once and persists
+
+  // Audio auto-play for disclaimer page
+  useEffect(() => {
+    if (showDisclaimer && audioRef.current) {
+      const startAudioOnInteraction = () => {
+        if (audioRef.current && !isPlaying) {
+          audioRef.current.play().then(() => {
+            setIsPlaying(true)
+            console.log('🎵 Music started on disclaimer interaction!')
+          }).catch(e => console.log('Disclaimer interaction play failed:', e))
+        }
+      }
+
+      // Add listeners for any interaction on disclaimer page
+      document.addEventListener('click', startAudioOnInteraction, { once: true })
+      document.addEventListener('mousedown', startAudioOnInteraction, { once: true })
+      document.addEventListener('touchstart', startAudioOnInteraction, { once: true })
+      document.addEventListener('keydown', startAudioOnInteraction, { once: true })
+
+      return () => {
+        document.removeEventListener('click', startAudioOnInteraction)
+        document.removeEventListener('mousedown', startAudioOnInteraction)
+        document.removeEventListener('touchstart', startAudioOnInteraction)
+        document.removeEventListener('keydown', startAudioOnInteraction)
+      }
+    }
+  }, [showDisclaimer, isPlaying])
 
   useEffect(() => {
     // Start animations when opening scene begins
@@ -154,30 +195,68 @@ export default function Home() {
   }, [showOpening, animations, currentStage, showDisclaimer])
 
   const handleDisclaimerComplete = () => {
+    console.log('Disclaimer button clicked - starting music...')
+    
     // Start music immediately when user clicks "I'm Ready"
     if (audioRef.current) {
       console.log('Audio element found, attempting to play...')
       console.log('Audio readyState:', audioRef.current.readyState)
       console.log('Audio src:', audioRef.current.src)
+      console.log('Audio paused:', audioRef.current.paused)
       
       audioRef.current.volume = 0.3
       audioRef.current.loop = true
+      audioRef.current.muted = false
       
-      const playPromise = audioRef.current.play()
+      // Force audio to be ready
+      audioRef.current.load()
       
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
+      // Try multiple approaches to start the music
+      const startMusic = async () => {
+        try {
+          // Approach 1: Direct play
+          if (audioRef.current) {
+            await audioRef.current.play()
             setIsPlaying(true)
             console.log('🎵 Music started successfully!')
-            console.log('Audio currentTime:', audioRef.current?.currentTime)
-            console.log('Audio duration:', audioRef.current?.duration)
-          })
-          .catch((error) => {
-            console.log('Music failed to start:', error)
-            console.log('Error details:', error.message)
-          })
+            return true
+          }
+        } catch (error) {
+          console.log('Direct play failed:', error)
+          
+          try {
+            // Approach 2: Wait a bit and try again
+            await new Promise(resolve => setTimeout(resolve, 100))
+            if (audioRef.current) {
+              await audioRef.current.play()
+              setIsPlaying(true)
+              console.log('🎵 Music started on retry!')
+              return true
+            }
+          } catch (retryError) {
+            console.log('Retry also failed:', retryError)
+            
+            try {
+              // Approach 3: Set currentTime and try again
+              if (audioRef.current) {
+                audioRef.current.currentTime = 0
+                await audioRef.current.play()
+                setIsPlaying(true)
+                console.log('🎵 Music started after reset!')
+                return true
+              }
+            } catch (finalError) {
+              console.log('All attempts failed:', finalError)
+              return false
+            }
+          }
+        }
+        return false
       }
+      
+      // Start the music
+      startMusic()
+      
     } else {
       console.log('Audio element not found!')
     }
@@ -252,19 +331,23 @@ export default function Home() {
         className="custom-cursor"
       />
 
+      {/* Persistent Audio Element - always present */}
+      <audio 
+        ref={audioRef} 
+        preload="auto"
+        onLoadStart={() => console.log('Audio loading started')}
+        onCanPlay={() => console.log('Audio can play')}
+        onPlay={() => console.log('Audio play event fired')}
+        onError={(e) => console.log('Audio error:', e)}
+        onLoadedData={() => console.log('Audio data loaded')}
+        onLoadedMetadata={() => console.log('Audio metadata loaded')}
+      >
+        <source src="/song/The%20Weeknd%20-%20Earned%20It%20%28Fifty%20Shades%20Of%20Grey%29.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
       {showDisclaimer ? (
         <main className="min-h-screen bg-black flex items-center justify-center enhanced-red-room">
-          <audio 
-            ref={audioRef} 
-            preload="auto"
-            onLoadStart={() => console.log('Audio loading started')}
-            onCanPlay={() => console.log('Audio can play')}
-            onPlay={() => console.log('Audio play event fired')}
-            onError={(e) => console.log('Audio error:', e)}
-          >
-            <source src="/song/The%20Weeknd%20-%20Earned%20It%20%28Fifty%20Shades%20Of%20Grey%29.mp3" type="audio/mpeg" />
-          </audio>
-
           <div className="text-center max-w-2xl mx-auto px-6">
             <h1 className="text-4xl md:text-6xl font-bold mb-12 text-seductive-red-500 seductive-glow">
               DISCLAIMER
@@ -288,6 +371,15 @@ export default function Home() {
             {showReadyButton && (
               <button
                 onClick={handleDisclaimerComplete}
+                onMouseDown={() => {
+                  // Try to start audio on mouse down for better user interaction detection
+                  if (audioRef.current) {
+                    audioRef.current.play().then(() => {
+                      setIsPlaying(true)
+                      console.log('🎵 Music started on mouse down!')
+                    }).catch(e => console.log('Mouse down play failed:', e))
+                  }
+                }}
                 className="px-8 py-4 bg-seductive-red-800 text-white text-xl font-semibold rounded-lg hover:bg-seductive-red-700 transition-all duration-500 hover:scale-105 heartbeat"
               >
                 I'm Ready
